@@ -150,3 +150,11 @@ undo inside the app.
 ## License
 
 MIT
+
+## Donate
+
+If Envelopes has been helpful to you, I'd love for you to consider supporting something even bigger. Instead of donating to this project, please consider making a donation to Path to Peace Counseling Services, a nonprofit dedicated to providing affordable mental health care throughout Southwest Virginia.
+
+Every dollar helps someone access the care they need.
+
+Donate here: https://www.ptpcs.org/donate
