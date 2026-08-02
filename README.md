@@ -34,7 +34,7 @@ so there is nothing to install on the machine you deploy to.
 ## Quick start
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/envelopes.git
+git clone https://github.com/jackob25-PTPCS/envelopes.git
 cd envelopes
 npm install
 npm run host

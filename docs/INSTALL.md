@@ -9,7 +9,7 @@ works in any browser.
 Needs Node 18 or newer. Nothing else — no dependencies to install.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/envelopes.git
+git clone https://github.com/jackob25-PTPCS/envelopes.git
 cd envelopes
 npm install          # build tooling only
 npm run host         # builds the front end, then serves on :4000

@@ -9,7 +9,7 @@ Run the server first — see [INSTALL.md](../docs/INSTALL.md). Node 18+ is the
 only requirement; the server has no dependencies.
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/envelopes.git
+git clone https://github.com/jackob25-PTPCS/envelopes.git
 cd envelopes && npm install && npm run host
 ```
 
