@@ -1,0 +1,53 @@
+{
+  "name": "envelopes",
+  "productName": "Envelopes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Self-hosted zero-based budgeting with SimpleFIN bank sync",
+  "license": "MIT",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "node server.mjs",
+    "host": "npm run build && node server.mjs",
+    "app": "npm run build && electron .",
+    "app:dev": "ELECTRON_START_URL=http://localhost:5173 electron .",
+    "dist": "npm run build && electron-builder --linux AppImage deb"
+  },
+  "dependencies": {
+    "lucide-react": "^0.383.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
+    "vite": "^5.3.4"
+  },
+  "build": {
+    "appId": "org.envelopes.app",
+    "productName": "Envelopes",
+    "asar": true,
+    "asarUnpack": ["server.mjs"],
+    "files": ["dist/**", "electron/**", "server.mjs", "build/icon.png"],
+    "directories": { "output": "release", "buildResources": "build" },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "category": "Office;Finance",
+      "icon": "build/icons",
+      "executableName": "envelopes",
+      "maintainer": "Envelopes contributors <noreply@example.com>",
+      "desktop": {
+        "Name": "Envelopes",
+        "Comment": "Self-hosted zero-based budgeting",
+        "StartupWMClass": "Envelopes",
+        "StartupNotify": "true",
+        "Keywords": "budget;finance;money;"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "appId": "org.envelopes.app",
+  "appName": "Envelopes",
+  "webDir": "www",
+  "android": {
+    "allowMixedContent": true,
+    "backgroundColor": "#FFFFFF"
+  },
+  "server": {
+    "androidScheme": "http",
+    "allowNavigation": [
+      "*"
+    ],
+    "cleartext": true
+  }
+}

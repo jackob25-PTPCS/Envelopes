@@ -1,0 +1,20 @@
+{
+  "name": "envelopes-android",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Android client for a self-hosted Envelopes server",
+  "scripts": {
+    "sync": "cap sync android",
+    "open": "cap open android",
+    "apk": "cap sync android && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.2",
+    "@capacitor/app": "^6.0.1",
+    "@capacitor/core": "^6.1.2"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.1.2"
+  }
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'" />
+  <title>Can't reach the server — Envelopes</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <main class="card">
+    <div class="brand">Envelopes</div>
+    <p class="sub">Couldn't reach <strong id="host"></strong>.</p>
+    <p class="msg bad" id="reason"></p>
+    <button id="retry">Try again</button>
+    <button id="change" class="quiet">Connect to a different server</button>
+    <p class="hint">
+      Usually the server isn't running, or this machine is off the network that can see it.
+      On the server: <code>sudo systemctl status envelopes</code>
+    </p>
+  </main>
+  <script src="error.js"></script>
+</body>
+</html>

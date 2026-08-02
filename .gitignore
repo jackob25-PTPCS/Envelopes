@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+release/
+# Capacitor generates this from capacitor.config.json + www/ + overrides/
+# Run `node prepare.mjs` in clients/android to recreate it.
+clients/android/android/
+
+# your data — never commit these
+.envelope/
+*.keystore
+*.jks
+state.json
+users.json
+simplefin.json
+secret
+env
+.env
+.env.*
+
+# editors and os
+.DS_Store
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,68 @@
+{
+  "name": "envelopes-client",
+  "productName": "Envelopes",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Desktop client for a self-hosted Envelopes server",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist:linux": "electron-builder --linux deb AppImage",
+    "dist:win": "electron-builder --win nsis portable"
+  },
+  "devDependencies": {
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "org.envelopes.client",
+    "productName": "Envelopes",
+    "files": [
+      "main.cjs",
+      "preload.cjs",
+      "pages/**",
+      "build/**"
+    ],
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "linux": {
+      "target": [
+        "deb",
+        "AppImage"
+      ],
+      "category": "Office;Finance",
+      "icon": "build/icons",
+      "executableName": "envelopes",
+      "maintainer": "Envelopes contributors <noreply@example.com>",
+      "desktop": {
+        "Name": "Envelopes",
+        "Comment": "Connect to your Envelopes server",
+        "StartupWMClass": "Envelopes",
+        "StartupNotify": "true",
+        "Keywords": "budget;finance;money;"
+      }
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Envelopes"
+    }
+  },
+  "homepage": "https://github.com/YOUR-USERNAME/envelopes",
+  "author": {
+    "name": "Envelopes contributors",
+    "email": "noreply@example.com"
+  }
+}

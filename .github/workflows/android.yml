@@ -1,0 +1,74 @@
+# Builds an installable Android APK.
+#
+# GitHub's runners already have the Android SDK, which is the point — nobody
+# needs a 3 GB local toolchain to get an app on their phone.
+#
+#   Actions tab -> "Build Android APK" -> "Run workflow"
+#
+# The APK appears under Artifacts on the finished run. If you run it with a
+# release tag selected, it also attaches to that release.
+
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      attach_to_release:
+        description: "Also attach the APK to a release (enter the tag, e.g. v1.0.0)"
+        required: false
+        default: ""
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: clients/android
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install Capacitor
+        run: npm install
+
+      - name: Generate the native project and apply overrides
+        run: node prepare.mjs
+
+      - name: Build the APK
+        run: |
+          chmod +x android/gradlew
+          cd android
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Name it something recognisable
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk Envelopes.apk
+
+      - name: Upload as a workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Envelopes-APK
+          path: clients/android/Envelopes.apk
+          retention-days: 90
+
+      - name: Attach to the release, if one was named
+        if: github.event_name == 'release' || inputs.attach_to_release != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name || inputs.attach_to_release }}
+        run: gh release upload "$TAG" Envelopes.apk --clobber --repo "$GITHUB_REPOSITORY"

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'" />
+  <title>Connect — Envelopes</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+  <main class="card">
+    <div class="brand">Envelopes</div>
+    <p class="sub">Point this at your Envelopes server. Your budget and bank connection live there, not here.</p>
+    <input id="url" placeholder="budget.example.com" autofocus spellcheck="false" autocapitalize="none" />
+    <div id="msg" class="msg"></div>
+    <button id="go">Connect</button>
+    <p class="hint">
+      On the same network, an address like <code>192.168.1.20:4000</code> works.
+      Bare hostnames get <code>https://</code>; private addresses get <code>http://</code>.
+    </p>
+  </main>
+  <script src="connect.js"></script>
+</body>
+</html>
